@@ -105,9 +105,9 @@ $$P(k|r)=r^ke^{-r}/k!$$
 Let's check some basic properties of the Poisson distribution.  First,
 if we haven't screwed up, the probality should sum to one.  In
 particular, we want to check the sum over $k$:
-$$\sigma_k r^ke^{-r}/k!$$
+$$\sum_k r^ke^{-r}/k!$$
 We can pull $e^{-r}$ out, leaving us with
-$$e^{-r}\sigma_k r^k/k!$$
+$$e^{-r}\sum_k r^k/k!$$
 The sum is just the Taylor series expansion for $e^{r}$, so we're left
 with $e^{-r}e^r=1$.  So, the probability is indeed one.
 
@@ -115,17 +115,17 @@ Next we should check the expectation of $k$.  Recall that we derived
 the distribution expecting the mean to be $r$, but we should check we
 didn't screw anything up along the way.  The mean is going to be the
 sum over $k$ of $kP(k|r)$, or:
-$$\sigma_k r^k k e^{-r}/k!$$
+$$\Sigma_k r^k k e^{-r}/k!$$
 The $k$ in the numerator cancels the last $k$ in the factorial, so we
-have $e^{-r}\sigma_k r^k/(k-1)!$.  Let $k'=k-1$, and we
-have $e^{-r}\sigma_{k'} r^{k'+1}/k! = e^{-r}r\sigma_{k'}r^{k'}/k'!$.
+have $e^{-r}\sum_k r^k/(k-1)!$.  Let $k'=k-1$, and we
+have $e^{-r}\sum_{k'} r^{k'+1}/k! = e^{-r}r\sum_{k'}r^{k'}/k'!$.
 Again the sum turns into $e^r$, cancelling the $e^{-r}$ out front, and
 we're left with $<k>=r$, as expected.
 
 Now, how about the variance?  We do {\textit{not}} (yet) know what
 this should be, but it's critical since all of our error estimates
 when we actually go out and take Poisson data will depend on this.
-Remember that $Var{k}=<k^2>-<k>^2$.  We already have $<k>$, but we're
+Remember that $Var(k)=<k^2>-<k>^2$.  We already have $<k>$, but we're
 going to have to find $<k^2>$.  That means finding $\sum_k
 k^2r^ke^{-r}/k!$.  We can start off with how we calculated the
 expectation, but this leaves us with $e^{-r}r \sum_{k'}
