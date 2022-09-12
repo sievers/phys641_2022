@@ -27,9 +27,9 @@ plt.colorbar()
 plt.show()
 plt.savefig('patch_raw.png')
 
-sig=1.0  #Gaussian sigma
-xshift=0.0 #sub-pixel x-shift guess
-yshift=0.0 #sub-pixel y-shift guess
+sig=1.2  #Gaussian sigma
+xshift=0.25 #sub-pixel x-shift guess
+yshift=-0.3 #sub-pixel y-shift guess
 
 dx=np.arange(-width,width)
 dxmat=np.outer(dx,np.ones(len(dx)))
@@ -50,9 +50,9 @@ plt.colorbar()
 plt.show()
 plt.savefig('patch_modsub.png')
 
-n=np.std(resid)
-chi1=np.sum(patch**2/n**2)
-chi2=np.sum(resid**2/n**2)
+sigma=np.std(resid)
+chi1=np.sum(patch**2/sigma**2)
+chi2=np.sum(resid**2/sigma**2)
 dchi=chi1-chi2
 print('chisq improvement is ',dchi)
 
