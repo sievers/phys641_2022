@@ -5,15 +5,16 @@ plt.ion()
 
 lat=34.0784*np.pi/180
 
-if True:
+if False:
     antpos=np.loadtxt('vla_d_array.txt')
     du=2.0
     color='b.'
+    array='d'
 else:
     antpos=np.loadtxt('vla_a_array.txt')
     du=40.0
     color='k.'
-    
+    array='a'
 
 antpos=antpos[:,:3]  #the last column is boring...
 antpos=antpos*1e-9*3e8 #convert to meters, since the file is in ns
@@ -75,6 +76,8 @@ for theta in theta_range:
     rot_mat[1,0]=-np.sin(theta)
     uv_rot=uv_3d@rot_mat
     uv_snap=uv_rot@proj_mat.T
+    if np.abs(theta)<0.001:
+        np.save('vla_uv_snap_'+array+'_array',uv_snap)
     plt.plot(uv_snap[:,0],uv_snap[:,1],color)
     uv_int=np.asarray(uv_snap/du,dtype='int')
     for i in range(uv_snap.shape[0]):
