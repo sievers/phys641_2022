@@ -2,6 +2,8 @@ import numpy as np
 from matplotlib import pyplot as plt
 plt.ion()
 
+np.random.seed(2)
+
 def smooth_map(map,npix):
     nx=map.shape[0]
     ny=map.shape[1]
@@ -180,6 +182,8 @@ pixsize=0.2*fac
 du=1/(npix*pixsize)  #this is the u resolution of our requested map
 uvmap=vis.grid(npix,du,myvis)
 dirty_map=np.fft.fftshift(np.fft.irfft2(uvmap.T)).T*(npix**2/2)
+
+
 beam=vis.dirty(npix,du,np.ones(len(vis.vis)))
 nsmooth=0
 while beam[nsmooth,0]>0.5:
@@ -187,7 +191,8 @@ while beam[nsmooth,0]>0.5:
 beam_sig=(2*nsmooth+1)/2.35
 
 map2=np.fft.fftshift(vis.dirty(npix,du))
-new_vis,new_cat=clean(vis,npix,pixsize,fac=0.5,niter=3*nsrc)
+new_vis,new_cat=clean(vis,npix,pixsize,fac=0.7,niter=3*nsrc)
+#new_vis,new_cat=clean(vis,npix,pixsize,fac=1.0,niter=10)
 
 truth=smooth_map(cat.to_map(npix,pixsize),beam_sig)
 cleaned=smooth_map(new_cat.to_map(npix,pixsize),beam_sig)+vis.dirty(npix,du,new_vis)
