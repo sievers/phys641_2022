@@ -2,8 +2,8 @@ import numpy as np
 from matplotlib import pyplot as plt
 import healpy
 #let's make a plot of individual Ylm's
-l=2
-m=0
+l=766
+m=150
 
 nlm=(l+1)*(l+2)//2  #where does this come from?
 
