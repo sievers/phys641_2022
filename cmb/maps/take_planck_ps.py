@@ -3,6 +3,9 @@ from astropy.io import fits
 from matplotlib import pyplot as plt
 import healpy
 import camb
+import time
+plt.ion()
+
 
 def get_spectrum(pars,lmax=3000):
     #print('pars are ',pars)
@@ -40,16 +43,20 @@ model=get_spectrum(pars)
 
 
 nside=1024
-if False:
+if True:
     #you can get these maps, and others, from:
     #https://irsa.ipac.caltech.edu/data/Planck/release_3/all-sky-maps/matrix_cmb.html
+    t1=time.time()
     m1=read_map('COM_CMB_IQU-nilc_2048_R3.00_hm1.fits')#,nside)
     m2=read_map('COM_CMB_IQU-nilc_2048_R3.00_hm2.fits')#,nside)
     map=read_map('COM_CMB_IQU-nilc_2048_R3.00_full.fits')#,nside)
-
+    print('read maps ',time.time()-t1)
     cl_auto=healpy.anafast(map)
+    print('got cl_auto ', time.time()-t1)
     cl_cross=healpy.anafast(m1,m2)
+    print('got cl_cross ', time.time()-t1)
     cl_noise=healpy.anafast(m1-m2)
+    print('got cl_noise ', time.time()-t1)
     #cl2=healpy.anafast(m1)
 
 
