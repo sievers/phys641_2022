@@ -1,0 +1,11 @@
+Wong - primary Majidi, secondary Ford
+Gerodias - primary Dibblee-Barkman, secondary Majidi
+Dumontier - primary Tapia, secondary Castro
+Dibblee-Barkman - primary Gerodias, secondary Tapia
+Bidula - primary Ford, secondary Kearney
+Majidi - primary Wong, secondary Gerodias
+Castro - primary Kearney, secondary Dumontier
+Tapia - primary Dumontier, secondary Dibblee-Barkman
+Kearney - primary Castro, secondary Bidula
+Ford - primary Bidula, secondary Wong
+
