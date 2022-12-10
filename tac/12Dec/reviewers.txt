@@ -1,0 +1,10 @@
+Proposal:    Primary:     Secondary:
+Shah         Raza         McGee
+Raza         Agrawal      Aditya
+Agrawal      Shah         Lazda
+McGee        Horlaville   Adamic
+Horlaville   McGee        Agrawal
+Aditya       Aditya       Shah
+Lazda        Adamic       Haghjoo
+Haghjoo      Lazda        Shah
+Adamic       Haghjoo      Raza      
